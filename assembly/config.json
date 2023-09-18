@@ -1,0 +1,21 @@
+{
+  "siteName": "brainwave",
+  "themeName": "brainwave",
+  "url": {
+    "loc": "http://brainwave.loc",
+    "test": "https://brainwave.com",
+    "prod": "https://brainwave.com"
+  },
+  "dbPrefix": "wp_",
+  "dbCharSet": "utf8mb4",
+  "dbCollate": "utf8mb4_unicode_520_ci",
+  "images": {
+    "inputTypes": "png,jpg,jpeg,heif,tiff",
+    "sizes": [],
+    "quality": {
+      "jpeg": 100,
+      "png": 100,
+      "webp": 100
+    }
+  }
+}

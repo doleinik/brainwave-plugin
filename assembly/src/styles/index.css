@@ -1,0 +1,7 @@
+@import "custom.css";
+@import "custom-blocks.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
