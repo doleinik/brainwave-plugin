@@ -87,7 +87,7 @@ function my_plugin_add_admin_menu()
         'Документація',
         'administrator',
         'brainwave-docs',
-        array($plugin_dashboard, 'displayPluginDocs'),
+        array($plugin_dashboard, 'displayPluginDocs')
     );
 }
 

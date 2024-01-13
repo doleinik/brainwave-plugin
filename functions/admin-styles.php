@@ -2,7 +2,19 @@
 
 
 add_action('admin_head', function () {
-    wp_enqueue_style('admin-brainwave-style',  '/wp-content/plugins/brainwave/index.css');
+//    if (is_admin() && isset($_GET['page'])) {
+//        $post_id = $_GET['page'];
+//
+//        // Получаем информацию о текущем посте
+//        $post = get_post($post_id);
+//
+//        // Проверяем тип контента (например, запись или страница)
+//        if ($post && $post->post_type === 'page') {
+//            // Подключаем стили только для страницы редактирования записи
+//        }
+//    }
+    wp_enqueue_style('admin-brainwave-style', '/wp-content/plugins/brainwave/index.css');
+
 });
 
 add_action('after_setup_theme', function () {
@@ -10,8 +22,10 @@ add_action('after_setup_theme', function () {
     add_editor_style('/assets/css/bw-style.css');
 });
 
-function enqueue_custom_styles() {
+function enqueue_custom_styles()
+{
     wp_enqueue_style('custom-styles', get_template_directory_uri() . '/assets/css/bw-style.css', array(), '1.0');
+
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
@@ -21,11 +35,12 @@ function custom_gutenberg_admin_scripts()
     wp_enqueue_script(
         'custom-gutenberg-admin-script',
         get_template_directory_uri() . '/assets/js/bw-script.js',
-        array(),
+        array('jquery'),
         true,
         true
     );
 }
+
 add_action('wp_enqueue_scripts', 'custom_gutenberg_admin_scripts');
 
 add_action('enqueue_block_editor_assets', 'custom_gutenberg_admin_scripts');
@@ -83,7 +98,7 @@ function custom_settings()
 //    change_permalink_structure();
 
     // Create home page
-    create_page_and_set_as_home();
+//    create_page_and_set_as_home();
 }
 
 add_action('admin_init', 'custom_settings');

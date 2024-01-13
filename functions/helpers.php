@@ -1,33 +1,44 @@
 <?php
-
-
 function renderUploadsSVG($filename = '')
 {
     if ($filename) {
-        echo file_get_contents(wp_upload_dir()['basedir'] . '/' . $filename['filename']);
+        if (wp_upload_dir()['basedir'] . '/' . $filename['filename']) {
+            echo file_get_contents(wp_upload_dir()['basedir'] . '/' . $filename['filename']);
+        }
     }
+}
+
+function getHomeUrl()
+{
+    return rtrim(home_url(), '/');
 }
 
 function renderAssetsSVG($filename = '')
 {
     if ($filename) {
-        echo file_get_contents(get_template_directory() . '/assets/images/' . $filename . '.svg');
+        $path = get_template_directory() . '/assets/images/' . $filename . '.svg';
+        if (is_readable($path)) {
+            echo file_get_contents($path);
+        }
     }
 }
 
-function renderBlock($name)
+function renderBlock($name, $args = [])
 {
-    get_template_part('/blocks/' . $name . '/index');
+//    get_template_part('/blocks/' . $name . '/index', $args);
+    $slug = '/blocks/' . $name . '/index';
+    get_template_part($slug, null, $args);
 }
 
-function renderComponent($name)
+function renderComponent($name, $args = [])
 {
-    get_template_part('/components/' . $name . '/index');
+    $slug = '/components/' . $name . '/index';
+    get_template_part($slug, null, $args);
 }
 
 function renderImages($filename)
 {
-    echo '/wp-content/themes/' . wp_get_theme() . '/assets/images/' . $filename;
+    echo get_theme_file_uri('/assets/images/' . $filename);
 }
 
 function returnEmpty()
@@ -37,12 +48,13 @@ function returnEmpty()
 
 function echoText($text)
 {
-    echo esc_html__($text, 'brainwave');
+  esc_attr_e($text, 'brainwave');
 }
 
-function renderReusableBlock($id){
-    $gblock = get_post( $id );
-    echo apply_filters( 'the_content', $gblock->post_content );
+function renderReusableBlock($id)
+{
+    $gblock = get_post($id);
+    echo apply_filters('the_content', $gblock->post_content);
 }
 
 function renderImageUpload($imageId, $size = 'full')
@@ -56,4 +68,3 @@ function renderImageUpload($imageId, $size = 'full')
            alt="<?php echo $date["image"]['alt'] ?? 'image'; ?>">
     <?php }
 }
-

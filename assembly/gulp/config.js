@@ -16,7 +16,7 @@ cfg.path = {
     js: `${assetsPath}/src/scripts`,
     css: `src/styles`,
     cssBlocks: `${themePath}/blocks`,
-    cssCustom: `${assetsPath}/src`
+    cssCustom: `${themePath}`
   },
   build: {
     js: `${assetsPath}/js/`,

@@ -1,5 +1,4 @@
-@import "custom.css";
-@import "custom-blocks.css";
+@import url("custom-blocks.css");
 
 @tailwind base;
 @tailwind components;

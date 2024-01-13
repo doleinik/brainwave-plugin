@@ -1,10 +1,10 @@
 {
-  "siteName": "brainwave",
-  "themeName": "brainwave",
+  "siteName": "homes",
+  "themeName": "homes",
   "url": {
-    "loc": "http://brainwave.loc",
-    "test": "https://brainwave.com",
-    "prod": "https://brainwave.com"
+    "loc": "http://homes.loc",
+    "test": "https://homes.com",
+    "prod": "https://homes.com"
   },
   "dbPrefix": "wp_",
   "dbCharSet": "utf8mb4",

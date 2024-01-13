@@ -1,14 +1,14 @@
 <?php
-
-function mythem_enqueue_style()
-{
-    $cache = (WP_DEBUG) ? microtime() : null;
-
-    wp_enqueue_style('style', get_template_directory_uri() . '/assets/css/bw-style.css', null, $cache);
-    wp_enqueue_script('scripts', get_template_directory_uri() . '/assets/js/bw-script.js', array('jquery'), $cache, true);
-}
-
-add_action('wp_enqueue_scripts', 'mythem_enqueue_style');
+//
+//function mythem_enqueue_style()
+//{
+//    $cache = (WP_DEBUG) ? microtime() : null;
+//
+//    wp_enqueue_style('style', get_template_directory_uri() . '/assets/css/bw-style.css', null, $cache);
+//    wp_enqueue_script('scripts', get_template_directory_uri() . '/assets/js/bw-script.js', array('jquery'), $cache, true);
+//}
+//
+//add_action('wp_enqueue_scripts', 'mythem_enqueue_style');
 
 //// Detect old browsers
 //function detectOldBrowsers()
@@ -54,7 +54,9 @@ function customizeTheme()
      register_nav_menus([
      'header_menu' => 'Header menu',
      'footer_menu' => 'Footer menu',
+     'footer_bottom' => 'Footer bottom',
      ]);
+
 
 }
 
@@ -81,15 +83,15 @@ function customizeTheme()
  });
 
 // Add contact info to admin
-//if (function_exists('acf_add_options_page')) {
-//    acf_add_options_page(array(
-//        'page_title' => 'BrainWave',
-//        'menu_title' => 'BrainWave',
-//        'menu_slug'  => 'brainwave-custom',
-//        'post_id'    => 'brainwave-custom',
-//        'icon_url'   => 'dashicons-shortcode',
-//        'position'   => 3,
-//        'redirect'   => true,
-//        'autoload'   => true
-//    ));
-//}
+if (function_exists('acf_add_options_page')) {
+    acf_add_options_page(array(
+        'page_title' => 'Information',
+        'menu_title' => 'Information',
+        'menu_slug'  => 'information',
+        'post_id'    => 'information',
+        'icon_url'   => '/wp-content/themes/sushijo/assets/images/icon-logo.svg',
+        'position'   => 3,
+        'redirect'   => true,
+        'autoload'   => true
+    ));
+}
